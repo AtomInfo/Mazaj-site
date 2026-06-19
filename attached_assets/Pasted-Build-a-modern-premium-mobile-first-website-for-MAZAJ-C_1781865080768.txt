@@ -1,0 +1,171 @@
+Build a modern, premium, mobile-first website for **MAZAJ COFFEE ROASTERS UGANDA**, a specialty coffee roastery located on Kira–Kasangati Road, Uganda.
+
+DESIGN REQUIREMENTS:
+
+* Professional, premium, export-ready brand image.
+* Elegant coffee-inspired color palette (deep coffee brown, cream, black, white, subtle gold accents).
+* Modern typography and smooth animations.
+* Fully responsive for desktop, tablet, and mobile.
+* Fast loading and SEO optimized.
+* Include high-quality coffee, roasting, café, and Ugandan coffee farm imagery.
+* Use subtle parallax effects and modern UI components.
+
+WEBSITE STRUCTURE:
+
+1. HERO SECTION
+   Headline:
+   "Freshly Roasted Ugandan Specialty Coffee"
+
+Subheadline:
+"Premium roasted coffee beans, espresso blends, wholesale supply, and export-quality coffee from Uganda."
+
+Call-to-Action Buttons:
+
+* Order Coffee
+* Request a Quote
+
+2. ABOUT US
+   Title:
+   "About MAZAJ Coffee Roasters Uganda"
+
+Content:
+MAZAJ COFFEE ROASTERS UGANDA is a specialty coffee roastery dedicated to delivering freshly roasted, high-quality Ugandan coffee. We serve homes, cafés, restaurants, hotels, offices, retailers, distributors, and international buyers with exceptional coffee sourced from Uganda's finest coffee-growing regions.
+
+3. SERVICES SECTION
+   Create attractive service cards for:
+
+* Coffee Roasting
+* Custom Roasting
+* Wholesale Coffee Supply
+* Roasted Coffee Beans
+* Ground Coffee
+* Espresso Blends
+* Green Coffee Beans
+* Coffee Export Services
+* Corporate Coffee Supply
+* Café Supply Solutions
+
+4. PRODUCTS SECTION
+   Display products with modern product cards:
+
+* Premium Arabica Coffee Beans
+* Espresso Blend
+* Ground Coffee
+* Specialty Single Origin Coffee
+* Green Coffee Beans
+* Export Coffee Lots
+
+Each card should include image, description, and inquiry button.
+
+5. WHY CHOOSE US
+   Include:
+
+* Freshly Roasted
+* Export Quality
+* Ugandan Specialty Coffee
+* Reliable Supply
+* Competitive Pricing
+* Consistent Quality
+* Professional Service
+
+6. EXPORT SECTION
+   Headline:
+   "Export-Quality Ugandan Coffee"
+
+Content:
+We supply green and roasted coffee to importers, distributors, cafés, coffee traders, and businesses worldwide. Samples and specifications are available upon request.
+
+Include:
+
+* International Supply
+* Bulk Orders
+* Quality Assurance
+* Export Documentation Support
+
+7. SERVICE AREAS
+   Display:
+   Kampala, Kira, Kasangati, Najjera, Ntinda, Bukoto, Kyaliwajjala, Namugongo, Wakiso, Entebbe, and surrounding areas.
+
+8. TESTIMONIALS
+   Create rotating testimonials from:
+
+* Café Owner
+* International Buyer
+* Tour Operator
+* Corporate Client
+
+Use realistic professional reviews.
+
+9. GALLERY
+   Professional image gallery showcasing:
+
+* Roasting process
+* Coffee beans
+* Coffee farms
+* Packaging
+* Brewing coffee
+* Customer experiences
+
+10. CONTACT SECTION
+    Business Name:
+    MAZAJ COFFEE ROASTERS UGANDA
+
+Phone:
++256 708 132968
+
+Email:
+[mazajcoffeeroastersuganda@gmail.com](mailto:mazajcoffeeroastersuganda@gmail.com)
+
+Location:
+Kira–Kasangati Road, Uganda
+
+Include:
+
+* Contact form
+* Google Maps integration placeholder
+* WhatsApp button
+* Click-to-call functionality
+
+11. FOOTER
+    Include:
+
+* Quick Links
+* Services
+* Social Media Links
+* Contact Information
+* Copyright
+
+SEO REQUIREMENTS:
+Title:
+"MAZAJ Coffee Roasters Uganda | Freshly Roasted Specialty Coffee"
+
+Meta Description:
+"Premium Ugandan specialty coffee, coffee roasting, wholesale coffee supply, roasted coffee beans, espresso blends, and export-quality coffee."
+
+Target Keywords:
+coffee roasters Uganda
+coffee roasters Kampala
+specialty coffee Uganda
+fresh roasted coffee Uganda
+wholesale coffee Uganda
+Ugandan coffee beans
+coffee supplier Uganda
+coffee export Uganda
+green coffee beans Uganda
+
+TECHNICAL REQUIREMENTS:
+
+* React + Next.js
+* Tailwind CSS
+* Framer Motion animations
+* SEO optimized
+* Accessibility compliant
+* Sticky navigation
+* Image optimization
+* Contact form validation
+* Dark/light mode toggle
+* WhatsApp floating button
+* High Lighthouse score
+* Professional production-ready code structure
+
+The final website should feel comparable to premium international coffee brands while showcasing Ugandan origin, craftsmanship, quality, and export capability.

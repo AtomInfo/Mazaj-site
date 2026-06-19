@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "MAZAJ Coffee Roasters Uganda"
+version = "1.0.0"
+id = "artifacts/mazaj-coffee"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23692
+
+[services.development]
+run = "pnpm --filter @workspace/mazaj-coffee run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/mazaj-coffee", "run", "build" ]
+publicDir = "artifacts/mazaj-coffee/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23692"
+BASE_PATH = "/"

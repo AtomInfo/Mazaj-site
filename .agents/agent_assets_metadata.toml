@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "AN9M0CEKnonFY9o9s6Xe5"
+uri = "file://artifacts/mazaj-coffee/public/images/hero.png"
+type = "image"
+title = "Hero background coffee roaster"
+
+[[generated]]
+id = "C1cVn-3cqYhdINHugBXWr"
+uri = "file://artifacts/mazaj-coffee/public/images/product-arabica.png"
+type = "image"
+title = "Arabica coffee beans"
+
+[[generated]]
+id = "0jXVhPxgFB37xmJ6AD-tn"
+uri = "file://artifacts/mazaj-coffee/public/images/product-espresso.png"
+type = "image"
+title = "Espresso blend"
+
+[[generated]]
+id = "GIOdIXQ9d5R9iTcPVKxaz"
+uri = "file://artifacts/mazaj-coffee/public/images/product-ground.png"
+type = "image"
+title = "Ground coffee"
+
+[[generated]]
+id = "VW-b_-A0CmvnxUBlY0gaC"
+uri = "file://artifacts/mazaj-coffee/public/images/product-single-origin.png"
+type = "image"
+title = "Single origin coffee"
+
+[[generated]]
+id = "qTgnqXNcvP3wo_goJYlrE"
+uri = "file://artifacts/mazaj-coffee/public/images/product-green.png"
+type = "image"
+title = "Green coffee beans"
+
+[[generated]]
+id = "jLIovUvDLjxC8mDqBWTLM"
+uri = "file://artifacts/mazaj-coffee/public/images/product-export.png"
+type = "image"
+title = "Export coffee lots"
+
+[[generated]]
+id = "E2LKGeMCtFcrHrx7VL3vy"
+uri = "file://artifacts/mazaj-coffee/public/images/gallery-roasting.png"
+type = "image"
+title = "Roasting process"
+
+[[generated]]
+id = "VtmiKQmW3KW_0PvTJSyRO"
+uri = "file://artifacts/mazaj-coffee/public/images/gallery-beans.png"
+type = "image"
+title = "Raw coffee beans"
+
+[[generated]]
+id = "zzSTpkVIj6UI3VUXlQtkb"
+uri = "file://artifacts/mazaj-coffee/public/images/gallery-farm.png"
+type = "image"
+title = "Uganda coffee farm"
