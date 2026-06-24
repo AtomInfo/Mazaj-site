@@ -96,3 +96,9 @@ id = "EOTQgbazMz0NPjqUxNVHj"
 uri = "file://artifacts/mazaj-coffee/public/images/hero-packaging.png"
 type = "image"
 title = "generated_image"
+
+[[generated]]
+id = "JVEw7SzdAHaZIBaABMD4C"
+uri = "file://artifacts/mazaj-coffee/public/images/gallery-packaging.png"
+type = "image"
+title = "generated_image"
