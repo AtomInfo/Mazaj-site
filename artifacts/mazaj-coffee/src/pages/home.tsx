@@ -252,14 +252,14 @@ export default function Home() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Step label — bottom-left */}
+        {/* Step label — bottom-left on desktop, below buttons on mobile */}
         <AnimatePresence mode="wait">
           <motion.div
             key={`label-${current}`}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0, transition: { delay: 0.4, duration: 0.5 } }}
             exit={{ opacity: 0, y: -8, transition: { duration: 0.3 } }}
-            className="absolute bottom-24 left-8 z-20 flex items-center gap-3"
+            className="hidden sm:flex absolute bottom-24 left-8 z-20 items-center gap-3"
           >
             <span className="text-primary font-bold text-sm tracking-widest tabular-nums">
               {HERO_SLIDES[current].step} / {String(HERO_SLIDES.length).padStart(2, "0")}
@@ -344,8 +344,17 @@ export default function Home() {
               <Button size="lg" variant="outline" className="w-full sm:w-auto text-lg px-8 py-6 bg-transparent text-white border-white hover:bg-white hover:text-black" onClick={() => scrollTo("contact")}>
                 Request a Quote
               </Button>
-            </motion.div>
-          </motion.div>
+            </motion.div>            <motion.div
+              variants={fadeInUp}
+              className="mt-4 flex flex-col items-center gap-2 sm:hidden"
+            >
+              <span className="text-primary font-bold text-sm tracking-widest tabular-nums">
+                {HERO_SLIDES[current].step} / {String(HERO_SLIDES.length).padStart(2, "0")}
+              </span>
+              <span className="text-white/90 text-sm font-medium tracking-wider uppercase text-center">
+                {HERO_SLIDES[current].label}
+              </span>
+            </motion.div>          </motion.div>
         </div>
       </section>
 
