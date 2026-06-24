@@ -60,3 +60,39 @@ id = "zzSTpkVIj6UI3VUXlQtkb"
 uri = "file://artifacts/mazaj-coffee/public/images/gallery-farm.png"
 type = "image"
 title = "Uganda coffee farm"
+
+[[generated]]
+id = "y8ykXZo0RkzC4ysV7DNzL"
+uri = "file://artifacts/mazaj-coffee/public/images/hero-harvesting.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "7WRATvH-cIxZ8ruKRNic6"
+uri = "file://artifacts/mazaj-coffee/public/images/hero-cleaning.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "oT3RFoLwxwKeeAJgOT-eO"
+uri = "file://artifacts/mazaj-coffee/public/images/hero-green-coffee.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "CXaevP1M-8RMkbcXtw59b"
+uri = "file://artifacts/mazaj-coffee/public/images/hero-roasting.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "pbhgC3jQqNNnW6zIKYema"
+uri = "file://artifacts/mazaj-coffee/public/images/hero-grinding.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "EOTQgbazMz0NPjqUxNVHj"
+uri = "file://artifacts/mazaj-coffee/public/images/hero-packaging.png"
+type = "image"
+title = "generated_image"

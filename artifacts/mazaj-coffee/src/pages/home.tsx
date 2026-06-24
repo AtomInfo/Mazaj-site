@@ -1,21 +1,48 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Navbar } from "@/components/navbar";
 import { ContactForm } from "@/components/contact-form";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, CheckCircle2, MessageCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, Phone, Mail, CheckCircle2, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
+
+const HERO_SLIDES = [
+  { src: "/images/hero-harvesting.png",   label: "Coffee Harvesting",  step: "01" },
+  { src: "/images/hero-cleaning.png",     label: "Cleaning & Sorting", step: "02" },
+  { src: "/images/hero-green-coffee.png", label: "Green Coffee",       step: "03" },
+  { src: "/images/hero-roasting.png",     label: "Roasting",           step: "04" },
+  { src: "/images/hero-grinding.png",     label: "Grinding",           step: "05" },
+  { src: "/images/hero-packaging.png",    label: "Packaging",          step: "06" },
+];
+
+const SLIDE_DURATION = 5000;
 
 export default function Home() {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [paused, setPaused] = useState(false);
+
+  const go = useCallback((idx: number, dir: number) => {
+    setDirection(dir);
+    setCurrent((idx + HERO_SLIDES.length) % HERO_SLIDES.length);
+  }, []);
+
+  const next = useCallback(() => go(current + 1, 1), [current, go]);
+  const prev = useCallback(() => go(current - 1, -1), [current, go]);
+
   useEffect(() => {
     document.title = "MAZAJ Coffee Roasters Uganda | Freshly Roasted Specialty Coffee";
   }, []);
 
+  useEffect(() => {
+    if (paused) return;
+    const timer = setTimeout(next, SLIDE_DURATION);
+    return () => clearTimeout(timer);
+  }, [current, paused, next]);
+
   const scrollTo = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   const fadeInUp = {
@@ -27,14 +54,20 @@ export default function Home() {
     visible: { transition: { staggerChildren: 0.1 } }
   };
 
+  const slideVariants = {
+    enter: (dir: number) => ({ opacity: 0, scale: dir > 0 ? 1.06 : 0.96 }),
+    center: { opacity: 1, scale: 1, transition: { duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] } },
+    exit:  (dir: number) => ({ opacity: 0, scale: dir > 0 ? 0.96 : 1.06, transition: { duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] } }),
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
       <Navbar />
 
       {/* WhatsApp Floating Button */}
-      <a 
-        href="https://wa.me/256708132968" 
-        target="_blank" 
+      <a
+        href="https://wa.me/256708132968"
+        target="_blank"
         rel="noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:scale-110 transition-transform flex items-center justify-center"
       >
@@ -42,16 +75,91 @@ export default function Home() {
       </a>
 
       {/* Hero Section */}
-      <section className="relative h-[100dvh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/hero.png" 
-            alt="Mazaj Coffee Roaster" 
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-black/60 dark:bg-black/70" />
+      <section
+        className="relative h-[100dvh] flex items-center justify-center overflow-hidden"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        {/* Carousel background */}
+        <AnimatePresence custom={direction} initial={false}>
+          <motion.div
+            key={current}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            className="absolute inset-0"
+          >
+            <img
+              src={HERO_SLIDES[current].src}
+              alt={HERO_SLIDES[current].label}
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-black/55" />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Step label — bottom-left */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`label-${current}`}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0, transition: { delay: 0.4, duration: 0.5 } }}
+            exit={{ opacity: 0, y: -8, transition: { duration: 0.3 } }}
+            className="absolute bottom-24 left-8 z-20 flex items-center gap-3"
+          >
+            <span className="text-primary font-bold text-sm tracking-widest tabular-nums">
+              {HERO_SLIDES[current].step} / {String(HERO_SLIDES.length).padStart(2, "0")}
+            </span>
+            <span className="w-px h-4 bg-white/40" />
+            <span className="text-white/90 text-sm font-medium tracking-wider uppercase">
+              {HERO_SLIDES[current].label}
+            </span>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Dot indicators */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {HERO_SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => go(i, i > current ? 1 : -1)}
+              aria-label={`Go to slide ${i + 1}`}
+              className="group relative h-[3px] rounded-full overflow-hidden bg-white/30 transition-all duration-300"
+              style={{ width: i === current ? "32px" : "12px" }}
+            >
+              {i === current && (
+                <motion.span
+                  key={current}
+                  className="absolute inset-0 bg-primary rounded-full"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
+                  style={{ originX: 0 }}
+                />
+              )}
+            </button>
+          ))}
         </div>
-        
+
+        {/* Prev / Next arrows */}
+        <button
+          onClick={prev}
+          aria-label="Previous slide"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 hover:bg-black/50 text-white transition-colors backdrop-blur-sm"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button
+          onClick={next}
+          aria-label="Next slide"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 hover:bg-black/50 text-white transition-colors backdrop-blur-sm"
+        >
+          <ChevronRight size={24} />
+        </button>
+
+        {/* Hero content */}
         <div className="container relative z-10 mx-auto px-4 text-center mt-16">
           <motion.div
             initial="hidden"
@@ -59,22 +167,22 @@ export default function Home() {
             variants={stagger}
             className="max-w-3xl mx-auto space-y-8"
           >
-            <motion.h1 
+            <motion.h1
               variants={fadeInUp}
               className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight"
             >
-              Freshly Roasted Ugandanz <br />
+              Freshly Roasted Ugandan <br />
               <span className="text-primary italic font-serif">Specialty Coffee</span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               variants={fadeInUp}
               className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-light"
             >
               Premium roasted coffee beans, espresso blends, wholesale supply, and export-quality coffee from Uganda.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               variants={fadeInUp}
               className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
             >
