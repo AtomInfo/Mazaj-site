@@ -63,7 +63,7 @@ export default function Home() {
               variants={fadeInUp}
               className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight"
             >
-              Freshly Roasted Ugandan <br />
+              Freshly Roasted Ugandanz <br />
               <span className="text-primary italic font-serif">Specialty Coffee</span>
             </motion.h1>
             
