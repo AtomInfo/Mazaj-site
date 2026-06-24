@@ -17,6 +17,158 @@ const HERO_SLIDES = [
 
 const SLIDE_DURATION = 5000;
 
+const TESTIMONIALS = [
+  {
+    quote: "MAZAJ has transformed our café's coffee program. The roast consistency is exceptional — every batch arrives fresh and on profile. Our customers notice the difference, and so does our bottom line. They've become our most trusted supplier.",
+    name: "Aisha Nakato",
+    role: "Café Owner",
+    company: "The Courtyard Café, Kampala",
+    initials: "AN",
+  },
+  {
+    quote: "We've sourced Ugandan coffee from several suppliers, but MAZAJ stands apart. Their green lots are clean, traceability documentation is thorough, and the team is highly responsive. The first shipment exceeded our cupping expectations — we're already placing a second order.",
+    name: "Marcus Eberhardt",
+    role: "International Buyer",
+    company: "Eberhardt Coffee Imports, Germany",
+    initials: "ME",
+  },
+  {
+    quote: "We feature Ugandan coffee experiences in our tour packages, and MAZAJ has been an outstanding partner. The farm visits, roastery tours, and the story behind the beans add incredible value. Guests leave genuinely moved — and they keep buying coffee online months later.",
+    name: "Sarah Ouma",
+    role: "Tour Operator",
+    company: "Pearl of Africa Safaris, Entebbe",
+    initials: "SO",
+  },
+  {
+    quote: "Our office switched to MAZAJ for our corporate coffee supply six months ago. The quality is superb, delivery is always on schedule, and the team is professional and easy to work with. Staff morale genuinely improved — a small thing that made a big difference.",
+    name: "James Ssemakula",
+    role: "Corporate Client",
+    company: "Head of Operations, Kampala Tech Hub",
+    initials: "JS",
+  },
+];
+
+const TESTIMONIAL_DURATION = 6000;
+
+function TestimonialsCarousel() {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [paused, setPaused] = useState(false);
+
+  const go = useCallback((idx: number, dir: number) => {
+    setDirection(dir);
+    setCurrent((idx + TESTIMONIALS.length) % TESTIMONIALS.length);
+  }, []);
+
+  const next = useCallback(() => go(current + 1, 1), [current, go]);
+  const prev = useCallback(() => go(current - 1, -1), [current, go]);
+
+  useEffect(() => {
+    if (paused) return;
+    const t = setTimeout(next, TESTIMONIAL_DURATION);
+    return () => clearTimeout(t);
+  }, [current, paused, next]);
+
+  const variants = {
+    enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 48 : -48 }),
+    center: { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] } },
+    exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -48 : 48, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } }),
+  };
+
+  const t = TESTIMONIALS[current];
+
+  return (
+    <section
+      id="testimonials"
+      className="py-28 bg-card overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-4">What People Say</h2>
+          <h3 className="text-3xl md:text-4xl font-serif">Trusted by Businesses Worldwide</h3>
+        </div>
+
+        <div className="relative max-w-3xl mx-auto">
+          {/* Quote mark */}
+          <span className="absolute -top-6 -left-4 text-[96px] leading-none text-primary/20 font-serif select-none pointer-events-none">"</span>
+
+          {/* Animated card */}
+          <div className="relative min-h-[260px] flex items-center">
+            <AnimatePresence custom={direction} mode="wait">
+              <motion.div
+                key={current}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                className="w-full"
+              >
+                <blockquote className="text-lg md:text-xl text-foreground/90 leading-relaxed font-light italic mb-10">
+                  "{t.quote}"
+                </blockquote>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center shrink-0">
+                    <span className="text-primary font-bold text-sm">{t.initials}</span>
+                  </div>
+                  <div>
+                    <p className="font-bold text-foreground">{t.name}</p>
+                    <p className="text-sm text-muted-foreground">{t.role} — {t.company}</p>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Controls */}
+          <div className="flex items-center justify-between mt-10">
+            <div className="flex gap-2">
+              {TESTIMONIALS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => go(i, i > current ? 1 : -1)}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                  className="relative h-[3px] rounded-full overflow-hidden bg-border transition-all duration-300"
+                  style={{ width: i === current ? "28px" : "12px" }}
+                >
+                  {i === current && (
+                    <motion.span
+                      key={current}
+                      className="absolute inset-0 bg-primary rounded-full"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: TESTIMONIAL_DURATION / 1000, ease: "linear" }}
+                      style={{ originX: 0 }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={prev}
+                aria-label="Previous testimonial"
+                className="p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-colors"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={next}
+                aria-label="Next testimonial"
+                className="p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-colors"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -293,6 +445,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsCarousel />
 
       {/* Export Section */}
       <section id="export" className="relative py-32 bg-secondary text-white overflow-hidden">
