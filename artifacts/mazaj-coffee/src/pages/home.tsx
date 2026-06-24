@@ -272,7 +272,7 @@ export default function Home() {
         </AnimatePresence>
 
         {/* Dot indicators */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        <div className="hidden sm:flex absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2">
           {HERO_SLIDES.map((_, i) => (
             <button
               key={i}
@@ -344,9 +344,10 @@ export default function Home() {
               <Button size="lg" variant="outline" className="w-full sm:w-auto text-lg px-8 py-6 bg-transparent text-white border-white hover:bg-white hover:text-black" onClick={() => scrollTo("contact")}>
                 Request a Quote
               </Button>
-            </motion.div>            <motion.div
+            </motion.div>
+            <motion.div
               variants={fadeInUp}
-              className="mt-4 flex flex-col items-center gap-2 sm:hidden"
+              className="mt-4 flex flex-col items-center gap-3 sm:hidden"
             >
               <span className="text-primary font-bold text-sm tracking-widest tabular-nums">
                 {HERO_SLIDES[current].step} / {String(HERO_SLIDES.length).padStart(2, "0")}
@@ -354,7 +355,30 @@ export default function Home() {
               <span className="text-white/90 text-sm font-medium tracking-wider uppercase text-center">
                 {HERO_SLIDES[current].label}
               </span>
-            </motion.div>          </motion.div>
+              <div className="flex gap-2">
+                {HERO_SLIDES.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => go(i, i > current ? 1 : -1)}
+                    aria-label={`Go to slide ${i + 1}`}
+                    className="relative h-[3px] rounded-full overflow-hidden bg-white/30 transition-all duration-300"
+                    style={{ width: i === current ? "32px" : "12px" }}
+                  >
+                    {i === current && (
+                      <motion.span
+                        key={current}
+                        className="absolute inset-0 bg-primary rounded-full"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
+                        style={{ originX: 0 }}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
