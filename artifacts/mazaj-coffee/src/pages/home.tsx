@@ -71,8 +71,8 @@ function TestimonialsCarousel() {
 
   const variants = {
     enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 48 : -48 }),
-    center: { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] } },
-    exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -48 : 48, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } }),
+    center: { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as const } },
+    exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -48 : 48, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const } }),
   };
 
   const t = TESTIMONIALS[current];
@@ -208,8 +208,8 @@ export default function Home() {
 
   const slideVariants = {
     enter: (dir: number) => ({ opacity: 0, scale: dir > 0 ? 1.06 : 0.96 }),
-    center: { opacity: 1, scale: 1, transition: { duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] } },
-    exit:  (dir: number) => ({ opacity: 0, scale: dir > 0 ? 0.96 : 1.06, transition: { duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] } }),
+    center: { opacity: 1, scale: 1, transition: { duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] as const } },
+    exit:  (dir: number) => ({ opacity: 0, scale: dir > 0 ? 0.96 : 1.06, transition: { duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] as const } }),
   };
 
   return (

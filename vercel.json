@@ -1,0 +1,15 @@
+{
+  "buildCommand": "cd artifacts/mazaj-coffee && pnpm run build",
+  "outputDirectory": "artifacts/mazaj-coffee/dist/public",
+  "regions": ["fra1"],
+  "env": {
+    "PORT": "3000",
+    "BASE_PATH": "/"
+  },
+  "routes": [
+    {
+      "src": "^/(?!api/|assets/|favicon\\.svg|robots\\.txt|images/|opengraph\\.jpg).*",
+      "dest": "/index.html"
+    }
+  ]
+}
