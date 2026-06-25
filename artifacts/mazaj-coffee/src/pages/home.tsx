@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { Navbar } from "@/components/navbar";
 import { ContactForm } from "@/components/contact-form";
+import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Phone, Mail, CheckCircle2, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { CheckCircle2, ChevronLeft, ChevronRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 
 const HERO_SLIDES = [
   { src: "/images/hero-harvesting.png",   label: "Coffee Harvesting",  step: "01" },
   { src: "/images/hero-cleaning.png",     label: "Cleaning & Sorting", step: "02" },
   { src: "/images/hero-green-coffee.png", label: "Green Coffee",       step: "03" },
-  { src: "/images/hero-roasting.png",     label: "Roasting",           step: "04" },
+  { src: "/images/hero.png",     label: "Roasting",           step: "04" },
   { src: "/images/hero-grinding.png",     label: "Grinding",           step: "05" },
   { src: "/images/hero-packaging.png",    label: "Packaging",          step: "06" },
 ];
@@ -19,32 +19,32 @@ const SLIDE_DURATION = 5000;
 
 const TESTIMONIALS = [
   {
-    quote: "MAZAJ has transformed our café's coffee program. The roast consistency is exceptional — every batch arrives fresh and on profile. Our customers notice the difference, and so does our bottom line. They've become our most trusted supplier.",
-    name: "Aisha Nakato",
-    role: "Café Owner",
-    company: "The Courtyard Café, Kampala",
-    initials: "AN",
-  },
-  {
-    quote: "We've sourced Ugandan coffee from several suppliers, but MAZAJ stands apart. Their green lots are clean, traceability documentation is thorough, and the team is highly responsive. The first shipment exceeded our cupping expectations — we're already placing a second order.",
-    name: "Marcus Eberhardt",
-    role: "International Buyer",
-    company: "Eberhardt Coffee Imports, Germany",
-    initials: "ME",
-  },
-  {
-    quote: "We feature Ugandan coffee experiences in our tour packages, and MAZAJ has been an outstanding partner. The farm visits, roastery tours, and the story behind the beans add incredible value. Guests leave genuinely moved — and they keep buying coffee online months later.",
-    name: "Sarah Ouma",
-    role: "Tour Operator",
-    company: "Pearl of Africa Safaris, Entebbe",
-    initials: "SO",
-  },
-  {
-    quote: "Our office switched to MAZAJ for our corporate coffee supply six months ago. The quality is superb, delivery is always on schedule, and the team is professional and easy to work with. Staff morale genuinely improved — a small thing that made a big difference.",
-    name: "James Ssemakula",
+    quote: "Excellent quality coffee with a rich aroma and great flavor. Freshly roasted, professionally packaged, and great customer service. Highly recommend MAZAJ COFFEE ROASTERS UGANDA for anyone looking for premium Ugandan coffee around Kampala.",
+    name: "Liorah Atukunda Katsme",
     role: "Corporate Client",
-    company: "Head of Operations, Kampala Tech Hub",
-    initials: "JS",
+    company: "",
+    initials: "LAK",
+  },
+  {
+    quote: "Freshly roasted coffee with amazing aroma and flavor. Great quality and excellent customer service. Highly recommended!",
+    name: "Ethan Arinaitwe",
+    role: "International Buyer",
+    company: "",
+    initials: "EA",
+  },
+  {
+    quote: "So delicious I liked your coffee wow! Ordering soon for my cafe business especially Espresso and Roasted Coffee beans",
+    name: "Amary sarah",
+    role: "Café Owner",
+    company: "",
+    initials: "AS",
+  },
+  {
+    quote: "Very delicious! Tastes nice well Grounded Espresso 😋 Fine Grounded I liked your coffee ☕️ And I recommend especially those with cafés try them",
+    name: "Kyokunda Molly",
+    role: "Corporate Client",
+    company: "",
+    initials: "KM",
   },
 ];
 
