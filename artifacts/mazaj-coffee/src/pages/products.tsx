@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "wouter";
+import { FlipCard } from "@/components/flip-card";
 import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -162,52 +163,48 @@ export default function ProductsPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-60px" }}
-                className="flip-card h-[400px]"
               >
-                <div className="flip-card-inner border border-border/50 rounded-[var(--radius)] shadow-sm">
-                  {/* Front */}
-                  <div className="flip-card-front bg-card flex flex-col">
-                    <div className="flex-1 overflow-hidden">
-                      <img
-                        src={product.img}
-                        alt={product.title}
-                        className="w-full h-full object-cover"
-                      />
+                <FlipCard
+                  height={400}
+                  front={
+                    <div className="w-full h-full flex flex-col border border-border/50 rounded-lg bg-card shadow-sm">
+                      <div className="flex-1 overflow-hidden rounded-t-lg">
+                        <img src={product.img} alt={product.title} className="w-full h-full object-cover" />
+                      </div>
+                      <div className="p-5 text-center">
+                        <div className="flex flex-wrap justify-center gap-1.5 mb-2">
+                          {product.tags.map((tag) => (
+                            <span key={tag} className="text-xs font-semibold tracking-wide uppercase px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <h4 className="text-lg font-serif font-medium">{product.title}</h4>
+                        <p className="text-xs text-muted-foreground mt-1">Hover to learn more</p>
+                      </div>
                     </div>
-                    <div className="p-5 text-center">
-                      <div className="flex flex-wrap justify-center gap-1.5 mb-2">
+                  }
+                  back={
+                    <div className="w-full h-full flex flex-col items-center justify-center p-7 text-center gap-4 bg-[#2C1810] rounded-lg shadow-sm">
+                      <div className="flex flex-wrap justify-center gap-1.5">
                         {product.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs font-semibold tracking-wide uppercase px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20"
-                          >
+                          <span key={tag} className="text-xs font-semibold tracking-wide uppercase px-2 py-0.5 rounded border" style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C", borderColor: "rgba(201,168,76,0.30)" }}>
                             {tag}
                           </span>
                         ))}
                       </div>
-                      <h4 className="text-lg font-serif font-medium">{product.title}</h4>
-                      <p className="text-xs text-muted-foreground mt-1">Hover to learn more</p>
+                      <h4 className="text-xl font-serif font-semibold text-[#F5F0E8]">{product.title}</h4>
+                      <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.80)" }}>{product.description}</p>
+                      <a
+                        href="/#contact"
+                        className="mt-2 w-full inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold transition-colors"
+                        style={{ background: "#C9A84C", color: "#0D0A07" }}
+                      >
+                        Inquire About This Product
+                      </a>
                     </div>
-                  </div>
-                  {/* Back */}
-                  <div className="flip-card-back bg-[#2C1810] flex flex-col items-center justify-center p-7 text-center gap-5">
-                    <div className="flex flex-wrap justify-center gap-1.5">
-                      {product.tags.map((tag) => (
-                        <span key={tag} className="text-xs font-semibold tracking-wide uppercase px-2 py-0.5 rounded bg-[#C9A84C]/20 text-[#C9A84C] border border-[#C9A84C]/30">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h4 className="text-xl font-serif font-semibold text-[#F5F0E8]">{product.title}</h4>
-                    <p className="text-sm text-[#F5F0E8]/80 leading-relaxed">{product.description}</p>
-                    <a
-                      href="/#contact"
-                      className="mt-2 w-full inline-flex items-center justify-center rounded-md bg-[#C9A84C] hover:bg-[#b8943e] text-[#0D0A07] font-semibold px-4 py-2 text-sm transition-colors"
-                    >
-                      Inquire About This Product
-                    </a>
-                  </div>
-                </div>
+                  }
+                />
               </motion.div>
             ))}
           </div>

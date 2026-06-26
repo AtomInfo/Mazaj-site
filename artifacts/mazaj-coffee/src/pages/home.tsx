@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/contact-form";
+import { FlipCard } from "@/components/flip-card";
 import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -437,35 +438,34 @@ export default function Home() {
               { title: "Green Coffee Beans", img: "/images/product-green.png", desc: "Export-quality unroasted Ugandan coffee for importers and roasters worldwide. Available in washed, natural, and honey process." },
               { title: "Export Coffee Lots", img: "/images/product-export.png", desc: "Large-volume export lots of green and roasted coffee for international buyers. We handle grading, sorting, documentation, and logistics support." },
             ].map((product, i) => (
-              <div key={i} className="flip-card h-[380px]">
-                <div className="flip-card-inner border border-border/50 rounded-[var(--radius)] shadow-sm">
-                  {/* Front */}
-                  <div className="flip-card-front bg-background flex flex-col">
-                    <div className="flex-1 overflow-hidden">
-                      <img
-                        src={product.img}
-                        alt={product.title}
-                        className="w-full h-full object-cover"
-                      />
+              <FlipCard
+                key={i}
+                height={380}
+                front={
+                  <div className="w-full h-full flex flex-col border border-border/50 rounded-lg bg-background shadow-sm">
+                    <div className="flex-1 overflow-hidden rounded-t-lg">
+                      <img src={product.img} alt={product.title} className="w-full h-full object-cover" />
                     </div>
                     <div className="p-5 text-center">
                       <h4 className="text-lg font-serif font-medium">{product.title}</h4>
                       <p className="text-xs text-muted-foreground mt-1">Hover to learn more</p>
                     </div>
                   </div>
-                  {/* Back */}
-                  <div className="flip-card-back bg-[#2C1810] flex flex-col items-center justify-center p-7 text-center gap-5">
+                }
+                back={
+                  <div className="w-full h-full flex flex-col items-center justify-center p-7 text-center gap-5 bg-[#2C1810] rounded-lg shadow-sm">
                     <h4 className="text-xl font-serif font-semibold text-[#F5F0E8]">{product.title}</h4>
-                    <p className="text-sm text-[#F5F0E8]/80 leading-relaxed">{product.desc}</p>
-                    <Button
-                      className="mt-2 bg-[#C9A84C] hover:bg-[#b8943e] text-[#0D0A07] font-semibold border-0 w-full"
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.80)" }}>{product.desc}</p>
+                    <button
                       onClick={() => scrollTo("contact")}
+                      className="mt-2 w-full rounded-md px-4 py-2 text-sm font-semibold transition-colors"
+                      style={{ background: "#C9A84C", color: "#0D0A07" }}
                     >
                       Inquire
-                    </Button>
+                    </button>
                   </div>
-                </div>
-              </div>
+                }
+              />
             ))}
           </div>
         </div>
