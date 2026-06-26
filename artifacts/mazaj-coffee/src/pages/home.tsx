@@ -81,8 +81,8 @@ function TestimonialsCarousel() {
     <section
       id="testimonials"
       className="py-28 bg-card overflow-hidden"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      // onMouseEnter={() => setPaused(true)}
+      // onMouseLeave={() => setPaused(false)}
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
@@ -229,8 +229,8 @@ export default function Home() {
       {/* Hero Section */}
       <section
         className="relative h-[100dvh] flex items-center justify-center overflow-hidden"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
+        // onMouseEnter={() => setPaused(true)}
+        // onMouseLeave={() => setPaused(false)}
       >
         {/* Carousel background */}
         <AnimatePresence custom={direction} initial={false}>
