@@ -479,14 +479,43 @@ export default function Home() {
             <h3 className="text-3xl md:text-4xl font-serif">Why Choose Us</h3>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-              "Freshly Roasted", "Export Quality", "Ugandan Specialty Coffee", 
-              "Reliable Supply", "Competitive Pricing", "Consistent Quality", "Professional Service"
+              {
+                title: "Freshly Roasted",
+                desc: "Every batch is roasted to order and sealed within 24 hours — no stale stock, no shortcuts.",
+              },
+              {
+                title: "Export Quality",
+                desc: "Our green and roasted lots meet international grade standards, with full documentation on request.",
+              },
+              {
+                title: "Ugandan Specialty Coffee",
+                desc: "Sourced from Uganda's finest growing regions — Elgon, Rwenzori, and Kigezi — for exceptional cup profiles.",
+              },
+              {
+                title: "Reliable Supply",
+                desc: "Consistent delivery schedules for cafés, corporates, and exporters. We show up every time.",
+              },
+              {
+                title: "Competitive Pricing",
+                desc: "Fair farm-to-roaster pricing with volume discounts for wholesale and export buyers.",
+              },
+              {
+                title: "Consistent Quality",
+                desc: "Rigorous in-house cupping and quality checks on every batch before it leaves our roastery.",
+              },
+              {
+                title: "Professional Service",
+                desc: "Fast response times, clear communication, and a team that treats your business like our own.",
+              },
             ].map((feature, i) => (
-              <div key={i} className="flex items-start gap-4 p-4 rounded-lg bg-card border border-border/50">
-                <CheckCircle2 className="text-primary shrink-0 mt-1" />
-                <p className="font-medium">{feature}</p>
+              <div key={i} className="flex flex-col gap-3 p-5 rounded-xl bg-card border border-border/50 hover:border-primary/40 transition-colors">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="text-primary shrink-0" size={20} />
+                  <p className="font-semibold">{feature.title}</p>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed pl-8">{feature.desc}</p>
               </div>
             ))}
           </div>
