@@ -162,33 +162,52 @@ export default function ProductsPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-60px" }}
+                className="flip-card h-[400px]"
               >
-                <Card className="overflow-hidden bg-card border-border/50 group h-full flex flex-col">
-                  <div className="aspect-[4/3] overflow-hidden relative">
-                    <img
-                      src={product.img}
-                      alt={product.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                <div className="flip-card-inner border border-border/50 rounded-[var(--radius)] shadow-sm">
+                  {/* Front */}
+                  <div className="flip-card-front bg-card flex flex-col">
+                    <div className="flex-1 overflow-hidden">
+                      <img
+                        src={product.img}
+                        alt={product.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-5 text-center">
+                      <div className="flex flex-wrap justify-center gap-1.5 mb-2">
+                        {product.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-xs font-semibold tracking-wide uppercase px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <h4 className="text-lg font-serif font-medium">{product.title}</h4>
+                      <p className="text-xs text-muted-foreground mt-1">Hover to learn more</p>
+                    </div>
                   </div>
-                  <CardContent className="p-6 flex flex-col gap-4 flex-1">
-                    <div className="flex flex-wrap gap-2">
+                  {/* Back */}
+                  <div className="flip-card-back bg-[#2C1810] flex flex-col items-center justify-center p-7 text-center gap-5">
+                    <div className="flex flex-wrap justify-center gap-1.5">
                       {product.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-semibold tracking-wide uppercase px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20"
-                        >
+                        <span key={tag} className="text-xs font-semibold tracking-wide uppercase px-2 py-0.5 rounded bg-[#C9A84C]/20 text-[#C9A84C] border border-[#C9A84C]/30">
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <h4 className="text-xl font-serif font-medium">{product.title}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">{product.description}</p>
-                    <Button variant="outline" className="w-full mt-auto" asChild>
-                      <a href="/#contact">Inquire About This Product</a>
-                    </Button>
-                  </CardContent>
-                </Card>
+                    <h4 className="text-xl font-serif font-semibold text-[#F5F0E8]">{product.title}</h4>
+                    <p className="text-sm text-[#F5F0E8]/80 leading-relaxed">{product.description}</p>
+                    <a
+                      href="/#contact"
+                      className="mt-2 w-full inline-flex items-center justify-center rounded-md bg-[#C9A84C] hover:bg-[#b8943e] text-[#0D0A07] font-semibold px-4 py-2 text-sm transition-colors"
+                    >
+                      Inquire About This Product
+                    </a>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

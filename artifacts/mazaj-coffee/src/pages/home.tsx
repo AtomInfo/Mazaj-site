@@ -430,28 +430,42 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "Premium Arabica Coffee Beans", img: "/images/product-arabica.png" },
-              { title: "Espresso Blend", img: "/images/product-espresso.png" },
-              { title: "Ground Coffee", img: "/images/hero-grounding.png" },
-              { title: "Specialty Single Origin Coffee", img: "/images/product-single-origin.png" },
-              { title: "Green Coffee Beans", img: "/images/product-green.png" },
-              { title: "Export Coffee Lots", img: "/images/product-export.png" },
+              { title: "Premium Arabica Coffee Beans", img: "/images/product-arabica.png", desc: "Single-origin Arabica from Uganda's high-altitude regions. Bright acidity, floral notes, and a clean complex finish. Available in light, medium, and dark roast." },
+              { title: "Espresso Blend", img: "/images/product-espresso.png", desc: "Our signature blend of select Ugandan Arabica and Robusta for a bold, balanced shot with rich crema and a lingering caramel sweetness." },
+              { title: "Ground Coffee", img: "/images/product-ground.png", desc: "Freshly ground to order in espresso, filter, French press, and Moka pot sizes. Sealed for freshness within 24 hours of grinding." },
+              { title: "Specialty Single Origin Coffee", img: "/images/product-single-origin.png", desc: "Traceable lots from specific Ugandan farms and cooperatives. Cup scores 80+. Perfect for specialty retailers and discerning home brewers." },
+              { title: "Green Coffee Beans", img: "/images/product-green.png", desc: "Export-quality unroasted Ugandan coffee for importers and roasters worldwide. Available in washed, natural, and honey process." },
+              { title: "Export Coffee Lots", img: "/images/product-export.png", desc: "Large-volume export lots of green and roasted coffee for international buyers. We handle grading, sorting, documentation, and logistics support." },
             ].map((product, i) => (
-              <Card key={i} className="overflow-hidden bg-background border-border/50 group">
-                <div className="aspect-square overflow-hidden relative">
-                  <img 
-                    src={product.img} 
-                    alt={product.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+              <div key={i} className="flip-card h-[380px]">
+                <div className="flip-card-inner border border-border/50 rounded-[var(--radius)] shadow-sm">
+                  {/* Front */}
+                  <div className="flip-card-front bg-background flex flex-col">
+                    <div className="flex-1 overflow-hidden">
+                      <img
+                        src={product.img}
+                        alt={product.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-5 text-center">
+                      <h4 className="text-lg font-serif font-medium">{product.title}</h4>
+                      <p className="text-xs text-muted-foreground mt-1">Hover to learn more</p>
+                    </div>
+                  </div>
+                  {/* Back */}
+                  <div className="flip-card-back bg-[#2C1810] flex flex-col items-center justify-center p-7 text-center gap-5">
+                    <h4 className="text-xl font-serif font-semibold text-[#F5F0E8]">{product.title}</h4>
+                    <p className="text-sm text-[#F5F0E8]/80 leading-relaxed">{product.desc}</p>
+                    <Button
+                      className="mt-2 bg-[#C9A84C] hover:bg-[#b8943e] text-[#0D0A07] font-semibold border-0 w-full"
+                      onClick={() => scrollTo("contact")}
+                    >
+                      Inquire
+                    </Button>
+                  </div>
                 </div>
-                <CardContent className="p-6 text-center space-y-4">
-                  <h4 className="text-xl font-serif font-medium">{product.title}</h4>
-                  <Button variant="outline" className="w-full" onClick={() => scrollTo("contact")}>
-                    Inquire
-                  </Button>
-                </CardContent>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
